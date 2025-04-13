@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/email-builder",
-  "version": "0.0.14",
+  "version": "0.0.17",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc"
+    "build": "npx tsup src/index.ts --format esm,cjs --dts --out-dir dist"
   },
   "author": "carlos@usewaypoint.com",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "zod": "^1 || ^2 || ^3"
   },
   "dependencies": {
-    "@rudyzeinoun/block-container": "^0.0.6",
+    "@rudyzeinoun/block-container": "^0.0.8",
     "@usewaypoint/block-avatar": "^0.0.3",
     "@usewaypoint/block-button": "^0.0.3",
     "@usewaypoint/block-columns-container": "^0.0.3",
@@ -37,5 +37,8 @@
     "@usewaypoint/block-spacer": "^0.0.3",
     "@usewaypoint/block-text": "^0.0.6",
     "@usewaypoint/document-core": "^0.0.6"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
   }
 }

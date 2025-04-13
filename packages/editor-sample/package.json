@@ -15,7 +15,7 @@
     "@usewaypoint/block-avatar": "^0.0.3",
     "@usewaypoint/block-button": "^0.0.3",
     "@usewaypoint/block-columns-container": "^0.0.3",
-    "@usewaypoint/block-container": "^0.0.2",
+    "@rudyzeinoun/block-container": "^0.0.2",
     "@usewaypoint/block-divider": "^0.0.4",
     "@usewaypoint/block-heading": "^0.0.3",
     "@usewaypoint/block-html": "^0.0.3",
