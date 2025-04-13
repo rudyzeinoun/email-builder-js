@@ -1,6 +1,6 @@
 {
-  "name": "@usewaypoint/email-builder",
-  "version": "0.0.8",
+  "name": "@rudyzeinoun/email-builder",
+  "version": "0.0.14",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -26,10 +26,10 @@
     "zod": "^1 || ^2 || ^3"
   },
   "dependencies": {
+    "@rudyzeinoun/block-container": "^0.0.6",
     "@usewaypoint/block-avatar": "^0.0.3",
     "@usewaypoint/block-button": "^0.0.3",
     "@usewaypoint/block-columns-container": "^0.0.3",
-    "@usewaypoint/block-container": "^0.0.2",
     "@usewaypoint/block-divider": "^0.0.4",
     "@usewaypoint/block-heading": "^0.0.3",
     "@usewaypoint/block-html": "^0.0.3",

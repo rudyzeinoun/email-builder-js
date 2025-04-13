@@ -1,5 +1,5 @@
 {
-  "name": "@usewaypoint/block-button",
+  "name": "@rudyzeinoun/block-button",
   "version": "0.0.3",
   "description": "@usewaypoint/document compatible Button component",
   "main": "./dist/index.js",

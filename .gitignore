@@ -11,3 +11,11 @@ yarn-debug.log*
 yarn-error.log*
 
 dist
+
+*.d.ts
+*.d.ts.map
+*.js
+*.js.map
+out/
+dist/
+build/

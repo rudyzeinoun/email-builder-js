@@ -30,11 +30,17 @@ export const ContainerPropsSchema = z.object({
     })
     .optional()
     .nullable(),
+  className: z.string().optional().nullable(),
+  loopStart: z.number().optional().nullable(),
+  loopEnd: z.number().optional().nullable(),
 });
 
 export type ContainerProps = {
   style?: z.infer<typeof ContainerPropsSchema>['style'];
   children?: JSX.Element | JSX.Element[] | null;
+  className?: z.infer<typeof ContainerPropsSchema>['className'];
+  loopStart?: z.infer<typeof ContainerPropsSchema>['loopStart'];
+  loopEnd?: z.infer<typeof ContainerPropsSchema>['loopEnd'];
 };
 
 function getBorder(style: ContainerProps['style']) {
@@ -44,15 +50,22 @@ function getBorder(style: ContainerProps['style']) {
   return `1px solid ${style.borderColor}`;
 }
 
-export function Container({ style, children }: ContainerProps) {
+export function Container({ style, children, className, loopStart, loopEnd }: ContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     border: getBorder(style),
     borderRadius: style?.borderRadius ?? undefined,
     padding: getPadding(style?.padding),
   };
+
+  if (!className) className = "";
+
+  if (!loopStart) loopStart = 0;
+
+  if (!loopEnd) loopEnd = 0;
+
   if (!children) {
-    return <div style={wStyle} />;
+    return <div className={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle} />;
   }
-  return <div style={wStyle}>{children}</div>;
+  return <div className={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>{children}</div>;
 }

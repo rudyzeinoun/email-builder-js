@@ -1,6 +1,6 @@
 {
-  "name": "@usewaypoint-monorepo",
-  "version": "0.0.6",
+  "name": "@rudyzeinoun/email-builder-js",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "target": "ES2022",
@@ -30,5 +30,9 @@
     "tsup": "^8.0.2",
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudyzeinoun/email-builder-js.git"
   }
 }

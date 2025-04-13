@@ -1,5 +1,5 @@
 {
-  "name": "@usewaypoint/block-divider",
+  "name": "@rudyzeinoun/block-divider",
   "version": "0.0.4",
   "description": "@usewaypoint/document compatible Divider component",
   "main": "./dist/index.js",

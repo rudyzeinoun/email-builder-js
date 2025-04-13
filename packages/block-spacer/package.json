@@ -1,5 +1,5 @@
 {
-  "name": "@usewaypoint/block-spacer",
+  "name": "@rudyzeinoun/block-spacer",
   "version": "0.0.3",
   "description": "@usewaypoint/document compatible Spacer component",
   "main": "./dist/index.js",

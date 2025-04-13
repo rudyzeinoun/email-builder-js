@@ -1,9 +1,12 @@
 import { z } from 'zod';
 
-import { ContainerPropsSchema as BaseContainerPropsSchema } from '@usewaypoint/block-container';
+import { ContainerPropsSchema as BaseContainerPropsSchema } from '@rudyzeinoun/block-container';
 
 export const ContainerPropsSchema = z.object({
   style: BaseContainerPropsSchema.shape.style,
+  className: z.string().optional().nullable(),
+  loopStart: z.number().optional().nullable(),
+  loopEnd: z.number().optional().nullable(),
   props: z
     .object({
       childrenIds: z.array(z.string()).optional().nullable(),
