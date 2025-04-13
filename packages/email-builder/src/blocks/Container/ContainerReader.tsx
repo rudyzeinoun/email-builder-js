@@ -9,7 +9,7 @@ import { ContainerProps } from './ContainerPropsSchema';
 export default function ContainerReader({ style, props, className, loopStart, loopEnd }: ContainerProps) {
   const childrenIds = props?.childrenIds ?? [];
   return (
-    <BaseContainer className={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={style}>
+    <BaseContainer className={className} loopStart={loopStart} loopEnd={loopEnd} style={style}>
       {childrenIds.map((childId) => (
         <ReaderBlock key={childId} id={childId} />
       ))}
