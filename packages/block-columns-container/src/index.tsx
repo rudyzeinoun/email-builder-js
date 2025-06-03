@@ -45,6 +45,9 @@ export const ColumnsContainerPropsSchema = z.object({
     })
     .optional()
     .nullable(),
+  className: z.string().optional().nullable(),
+  loopStart: z.number().optional().nullable(),
+  loopEnd: z.number().optional().nullable(),
 });
 
 type TColumn = JSX.Element | JSX.Element[] | null;
@@ -58,7 +61,7 @@ const ColumnsContainerPropsDefaults = {
   contentAlignment: 'middle',
 } as const;
 
-export function ColumnsContainer({ style, columns, props }: ColumnsContainerProps) {
+export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd }: ColumnsContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     padding: getPadding(style?.padding),
@@ -72,7 +75,7 @@ export function ColumnsContainer({ style, columns, props }: ColumnsContainerProp
   };
 
   return (
-    <div style={wStyle}>
+    <div data-class-name={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
       <table
         align="center"
         width="100%"
@@ -118,7 +121,7 @@ function TableCell({ index, props, columns }: Props) {
     width: props.fixedWidths?.[index] ?? undefined,
   };
   const children = (columns && columns[index]) ?? null;
-  return <td style={style}>{children}</td>;
+  return <td data-iteration-index={index} style={style}>{children}</td>;
 }
 
 function getPaddingBefore(index: number, { columnsGap, columnsCount }: Props['props']) {

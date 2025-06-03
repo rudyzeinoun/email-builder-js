@@ -16,9 +16,10 @@
     "dist"
   ],
   "scripts": {
+    "publish": "npm publish --access public",
     "build": "npm run build:mjs",
     "build:mjs": "tsc -d -p tsconfig.build.json && npm run build:mjs:transform",
-    "build:mjs:transform": "mjscjs -p tsconfig.build.json",
+    "build:mjs:transform": "npx mjscjs -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "carlos@usewaypoint.com",
