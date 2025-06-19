@@ -22,6 +22,8 @@ const getPadding = (padding: z.infer<typeof PADDING_SCHEMA>) =>
 
 const FONT_FAMILY_SCHEMA = z
   .enum([
+    'HELVETICA',
+    'GEORGIA',
     'MODERN_SANS',
     'BOOK_SANS',
     'ORGANIC_SANS',
@@ -37,6 +39,10 @@ const FONT_FAMILY_SCHEMA = z
 
 function getFontFamily(fontFamily: z.infer<typeof FONT_FAMILY_SCHEMA>) {
   switch (fontFamily) {
+    case 'HELVETICA':
+      return 'Helvetica, Arial, sans-serif';
+    case 'GEORGIA':
+      return '"Georgia, "Times New Roman", Times, serif';
     case 'MODERN_SANS':
       return '"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif';
     case 'BOOK_SANS':

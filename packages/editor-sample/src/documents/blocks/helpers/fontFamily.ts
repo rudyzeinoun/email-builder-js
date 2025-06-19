@@ -1,5 +1,15 @@
 export const FONT_FAMILIES = [
   {
+    key: "HELVETICA",
+    label: "Helvetica",
+    value: "Helvetica, Arial, sans-serif",
+  },
+  {
+    key: "GEORGIA",
+    label: "Georgia",
+    value: 'Georgia, "Times New Roman", Times, serif',
+  },
+  {
     key: 'MODERN_SANS',
     label: 'Modern sans',
     value: '"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif',
@@ -49,6 +59,8 @@ export const FONT_FAMILIES = [
 ];
 
 export const FONT_FAMILY_NAMES = [
+  "HELVETICA",
+  "GEORGIA",
   'MODERN_SANS',
   'BOOK_SANS',
   'ORGANIC_SANS',
