@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-text",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "@usewaypoint/document compatible Text component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,6 +16,10 @@
     "dist"
   ],
   "scripts": {
+    "publish": "npm publish --access public",
+    "build": "npm run build:mjs",
+    "build:mjs": "tsc -d -p tsconfig.build.json && npm run build:mjs:transform",
+    "build:mjs:transform": "npx mjscjs -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "carlos@usewaypoint.com",

@@ -10,7 +10,7 @@ function getFontFamily(fontFamily: EmailLayoutProps['fontFamily']) {
     case 'HELVETICA':
       return 'Helvetica, Arial, sans-serif';
     case 'GEORGIA':
-      return '"Georgia, "Times New Roman", Times, serif';
+      return 'Georgia, "Times New Roman", Times, serif';
     case 'MODERN_SANS':
       return '"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif';
     case 'BOOK_SANS':
