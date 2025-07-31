@@ -6,12 +6,12 @@ import { ReaderBlock } from '../../Reader/core';
 
 import { ColumnsContainerProps } from './ColumnsContainerPropsSchema';
 
-export default function ColumnsContainerReader({ style, props, className, loopStart, loopEnd }: ColumnsContainerProps) {
+export default function ColumnsContainerReader({ style, props, className, loopStart, loopEnd, responsiveDisplay }: ColumnsContainerProps) {
   const { columns, ...restProps } = props ?? {};
   let cols = undefined;
   if (columns) {
     cols = columns.map((col) => col.childrenIds.map((childId) => <ReaderBlock key={childId} id={childId} />));
   }
 
-  return <BaseColumnsContainer props={restProps} columns={cols} style={style} className={className} loopStart={loopStart} loopEnd={loopEnd} />;
+  return <BaseColumnsContainer props={restProps} columns={cols} style={style} className={className} loopStart={loopStart} loopEnd={loopEnd} responsiveDisplay={responsiveDisplay} />;
 }

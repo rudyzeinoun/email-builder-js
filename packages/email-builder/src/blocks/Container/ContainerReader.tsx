@@ -6,10 +6,10 @@ import { ReaderBlock } from '../../Reader/core';
 
 import { ContainerProps } from './ContainerPropsSchema';
 
-export default function ContainerReader({ style, props, className, loopStart, loopEnd }: ContainerProps) {
+export default function ContainerReader({ style, props, className, loopStart, loopEnd, responsiveDisplay }: ContainerProps) {
   const childrenIds = props?.childrenIds ?? [];
   return (
-    <BaseContainer className={className} loopStart={loopStart} loopEnd={loopEnd} style={style}>
+    <BaseContainer className={className} loopStart={loopStart} loopEnd={loopEnd} style={style} responsiveDisplay={responsiveDisplay}>
       {childrenIds.map((childId) => (
         <ReaderBlock key={childId} id={childId} />
       ))}

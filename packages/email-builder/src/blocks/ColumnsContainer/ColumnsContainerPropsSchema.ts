@@ -7,6 +7,7 @@ const BasePropsShape = BaseColumnsContainerPropsSchema.shape.props.unwrap().unwr
 const ColumnsContainerPropsSchema = z.object({
   style: BaseColumnsContainerPropsSchema.shape.style,
   className: z.string().optional().nullable(),
+  responsiveDisplay: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
   props: z

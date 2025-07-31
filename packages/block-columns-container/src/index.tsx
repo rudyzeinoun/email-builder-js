@@ -46,6 +46,7 @@ export const ColumnsContainerPropsSchema = z.object({
     .optional()
     .nullable(),
   className: z.string().optional().nullable(),
+  responsiveDisplay: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
 });
@@ -61,11 +62,23 @@ const ColumnsContainerPropsDefaults = {
   contentAlignment: 'middle',
 } as const;
 
-export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd }: ColumnsContainerProps) {
+export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd, responsiveDisplay }: ColumnsContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     padding: getPadding(style?.padding),
   };
+
+  if (!className) className = "";
+
+  if (!loopStart) loopStart = 0;
+
+  if (!loopEnd) loopEnd = 0;
+
+  if (responsiveDisplay == 'mobile') {
+    className += ' responsive-mobile';
+  } else if (responsiveDisplay == 'desktop') {
+    className += ' responsive-desktop';
+  }
 
   const blockProps = {
     columnsCount: props?.columnsCount ?? ColumnsContainerPropsDefaults.columnsCount,
