@@ -31,6 +31,7 @@ export const EmailLayoutPropsSchema = z.object({
   textColor: COLOR_SCHEMA,
   fontFamily: FONT_FAMILY_SCHEMA,
   childrenIds: z.array(z.string()).optional().nullable(),
+  previewText: z.string().optional().nullable(),
 });
 
 export type EmailLayoutProps = z.infer<typeof EmailLayoutPropsSchema>;
