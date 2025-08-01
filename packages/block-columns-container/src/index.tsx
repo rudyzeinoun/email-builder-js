@@ -47,6 +47,7 @@ export const ColumnsContainerPropsSchema = z.object({
     .nullable(),
   className: z.string().optional().nullable(),
   responsiveDisplay: z.string().optional().nullable(),
+  conditionStatement: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
 });
@@ -62,7 +63,7 @@ const ColumnsContainerPropsDefaults = {
   contentAlignment: 'middle',
 } as const;
 
-export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd, responsiveDisplay }: ColumnsContainerProps) {
+export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd, responsiveDisplay, conditionStatement }: ColumnsContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     padding: getPadding(style?.padding),
@@ -88,7 +89,7 @@ export function ColumnsContainer({ style, columns, props, className, loopStart, 
   };
 
   return (
-    <div data-class-name={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
+    <div className={className} data-condition={conditionStatement} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
       <table
         align="center"
         width="100%"

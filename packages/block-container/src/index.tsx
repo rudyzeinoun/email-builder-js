@@ -32,6 +32,7 @@ export const ContainerPropsSchema = z.object({
     .nullable(),
   className: z.string().optional().nullable(),
   responsiveDisplay: z.string().optional().nullable(),
+  conditionStatement: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
 });
@@ -41,6 +42,7 @@ export type ContainerProps = {
   children?: JSX.Element | JSX.Element[] | null;
   className?: z.infer<typeof ContainerPropsSchema>['className'];
   responsiveDisplay?: z.infer<typeof ContainerPropsSchema>['responsiveDisplay'];
+  conditionStatement?: z.infer<typeof ContainerPropsSchema>['conditionStatement'];
   loopStart?: z.infer<typeof ContainerPropsSchema>['loopStart'];
   loopEnd?: z.infer<typeof ContainerPropsSchema>['loopEnd'];
 };
@@ -52,7 +54,7 @@ function getBorder(style: ContainerProps['style']) {
   return `1px solid ${style.borderColor}`;
 }
 
-export function Container({ style, children, className, loopStart, loopEnd, responsiveDisplay }: ContainerProps) {
+export function Container({ style, children, className, loopStart, loopEnd, responsiveDisplay, conditionStatement }: ContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     border: getBorder(style),
@@ -72,8 +74,17 @@ export function Container({ style, children, className, loopStart, loopEnd, resp
     className += ' responsive-desktop';
   }
 
-  if (!children) {
-    return <div className={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle} />;
+  const divProps: any = {
+    className,
+    'data-loop-start': loopStart,
+    'data-loop-end': loopEnd,
+    style: wStyle,
+  };
+  if (conditionStatement) {
+    divProps['data-condition'] = conditionStatement;
   }
-  return <div className={className} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>{children}</div>;
+  if (!children) {
+    return <div {...divProps} />;
+  }
+  return <div {...divProps}>{children}</div>;
 }

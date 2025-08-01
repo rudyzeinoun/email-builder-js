@@ -6,6 +6,7 @@ export const ContainerPropsSchema = z.object({
   style: BaseContainerPropsSchema.shape.style,
   className: z.string().optional().nullable(),
   responsiveDisplay: z.string().optional().nullable(),
+  conditionStatement: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
   props: z
