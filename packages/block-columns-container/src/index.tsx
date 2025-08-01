@@ -75,10 +75,11 @@ export function ColumnsContainer({ style, columns, props, className, loopStart, 
 
   if (!loopEnd) loopEnd = 0;
 
+  let classesList = "";
   if (responsiveDisplay == 'mobile') {
-    className += ' responsive-mobile';
+    classesList += ' responsive-mobile';
   } else if (responsiveDisplay == 'desktop') {
-    className += ' responsive-desktop';
+    classesList += ' responsive-desktop';
   }
 
   const blockProps = {
@@ -89,7 +90,7 @@ export function ColumnsContainer({ style, columns, props, className, loopStart, 
   };
 
   return (
-    <div className={className} data-condition={conditionStatement} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
+    <div data-column-loop={className} className={classesList} data-condition={conditionStatement} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
       <table
         align="center"
         width="100%"

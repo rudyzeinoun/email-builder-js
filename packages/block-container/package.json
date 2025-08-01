@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-container",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "@usewaypoint/document compatible Container component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

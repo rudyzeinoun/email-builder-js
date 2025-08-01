@@ -68,14 +68,16 @@ export function Container({ style, children, className, loopStart, loopEnd, resp
 
   if (!loopEnd) loopEnd = 0;
 
+  let classesList = "";
   if (responsiveDisplay == 'mobile') {
-    className += ' responsive-mobile';
+    classesList += ' responsive-mobile';
   } else if (responsiveDisplay == 'desktop') {
-    className += ' responsive-desktop';
+    classesList += ' responsive-desktop';
   }
 
   const divProps: any = {
-    className,
+    className: classesList,
+    'data-loop': className,
     'data-loop-start': loopStart,
     'data-loop-end': loopEnd,
     style: wStyle,
