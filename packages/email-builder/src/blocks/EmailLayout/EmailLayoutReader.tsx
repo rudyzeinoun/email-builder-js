@@ -42,16 +42,16 @@ function getBorder({ borderColor }: EmailLayoutProps) {
 export default function EmailLayoutReader(props: EmailLayoutProps) {
   const childrenIds = props.childrenIds ?? [];
   return (
-     <Fragment>
+    <Fragment>
       {props.previewText && (
-        <div
-          style={{ display: 'none', maxHeight: '0px', overflow: 'hidden'}}
-        >
+        <div style={{ display: 'none', maxHeight: '0px', overflow: 'hidden' }}>
           {props.previewText}
           &nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;
         </div>
       )}
+
       <div
+        className={props.underline !== true ? 'no-underline' : undefined}
         style={{
           backgroundColor: props.backdropColor ?? '#F5F5F5',
           color: props.textColor ?? '#262626',

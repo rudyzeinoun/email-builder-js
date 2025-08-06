@@ -11,16 +11,17 @@ export default function renderToStaticMarkup(document: TReaderDocument, { rootBl
     '<!DOCTYPE html>' +
     baseRenderToStaticMarkup(
       <html>
-        <head>    
+        <head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <style type="text/css">
-          {`
+            {`
               .responsive-mobile { display: none !important; }
               .responsive-desktop { display: block !important; }
               @media (max-width: 450px) {
                 .responsive-mobile { display: block !important; }
                 .responsive-desktop { display: none !important; }
               }
+              .no-underline a { text-decoration: none }
           `}
           </style>
         </head>
