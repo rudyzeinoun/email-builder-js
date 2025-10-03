@@ -15,6 +15,7 @@ export default function renderToStaticMarkup(document: TReaderDocument, { rootBl
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <style type="text/css">
             {`
+              p { margin: 0 }
               .responsive-mobile { display: none !important; }
               .responsive-desktop { display: block !important; }
               @media (max-width: 450px) {
