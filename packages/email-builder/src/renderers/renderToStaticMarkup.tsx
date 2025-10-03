@@ -23,6 +23,20 @@ export default function renderToStaticMarkup(document: TReaderDocument, { rootBl
                 .responsive-desktop { display: none !important; }
               }
               .no-underline a { text-decoration: none }
+
+              @media only screen and (max-width: 450px) {
+              .stack { 
+                display: table-row-group !important;
+                width: 100% !important; 
+                max-width: 100% !important;
+              }
+              .stack.stack-header { display: table-header-group !important; } 
+              .stack.stack-footer { display: table-footer-group !important; } 
+              .stack img { 
+                width: 100% !important; 
+                height: auto !important; 
+              }
+            }
           `}
           </style>
         </head>

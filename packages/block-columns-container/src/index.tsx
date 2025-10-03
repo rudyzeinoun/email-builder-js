@@ -47,6 +47,7 @@ export const ColumnsContainerPropsSchema = z.object({
     .nullable(),
   className: z.string().optional().nullable(),
   responsiveDisplay: z.string().optional().nullable(),
+  stacking: z.string().optional().nullable(),
   conditionStatement: z.string().optional().nullable(),
   loopStart: z.number().optional().nullable(),
   loopEnd: z.number().optional().nullable(),
@@ -63,19 +64,29 @@ const ColumnsContainerPropsDefaults = {
   contentAlignment: 'middle',
 } as const;
 
-export function ColumnsContainer({ style, columns, props, className, loopStart, loopEnd, responsiveDisplay, conditionStatement }: ColumnsContainerProps) {
+export function ColumnsContainer({
+  style,
+  columns,
+  props,
+  className,
+  loopStart,
+  loopEnd,
+  responsiveDisplay,
+  conditionStatement,
+  stacking,
+}: ColumnsContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     padding: getPadding(style?.padding),
   };
 
-  if (!className) className = "";
+  if (!className) className = '';
 
   if (!loopStart) loopStart = 0;
 
   if (!loopEnd) loopEnd = 0;
 
-  let classesList = "";
+  let classesList = '';
   if (responsiveDisplay == 'mobile') {
     classesList += ' responsive-mobile';
   } else if (responsiveDisplay == 'desktop') {
@@ -90,7 +101,14 @@ export function ColumnsContainer({ style, columns, props, className, loopStart, 
   };
 
   return (
-    <div data-column-loop={className} className={classesList} data-condition={conditionStatement} data-loop-start={loopStart} data-loop-end={loopEnd} style={wStyle}>
+    <div
+      data-column-loop={className}
+      className={classesList}
+      data-condition={conditionStatement}
+      data-loop-start={loopStart}
+      data-loop-end={loopEnd}
+      style={wStyle}
+    >
       <table
         align="center"
         width="100%"
@@ -100,9 +118,9 @@ export function ColumnsContainer({ style, columns, props, className, loopStart, 
       >
         <tbody style={{ width: '100%' }}>
           <tr style={{ width: '100%' }}>
-            <TableCell index={0} props={blockProps} columns={columns} />
-            <TableCell index={1} props={blockProps} columns={columns} />
-            <TableCell index={2} props={blockProps} columns={columns} />
+            <TableCell stacking={stacking} index={0} props={blockProps} columns={columns} />
+            <TableCell stacking={stacking} index={1} props={blockProps} columns={columns} />
+            <TableCell stacking={stacking} index={2} props={blockProps} columns={columns} />
           </tr>
         </tbody>
       </table>
@@ -119,13 +137,35 @@ type Props = {
   };
   index: number;
   columns?: TColumn[];
+  stacking: string | null | undefined;
 };
-function TableCell({ index, props, columns }: Props) {
+function TableCell({ index, props, columns, stacking }: Props) {
   const contentAlignment = props?.contentAlignment ?? ColumnsContainerPropsDefaults.contentAlignment;
   const columnsCount = props?.columnsCount ?? ColumnsContainerPropsDefaults.columnsCount;
 
   if (columnsCount === 2 && index === 2) {
     return null;
+  }
+
+  let className = '';
+  if (stacking == 'normal') {
+    className += ' stack';
+    if (index === 0) {
+      className += ' stack-header';
+    } else if (index === 1 && columnsCount === 2) {
+      className += ' stack-footer';
+    } else if (index === 2 && columnsCount === 3) {
+      className += ' stack-footer';
+    }
+  } else if (stacking == 'reverse') {
+    className += ' stack';
+    if (index === 0) {
+      className += ' stack-footer';
+    } else if (index === 1 && columnsCount === 2) {
+      className += ' stack-header';
+    } else if (index === 2 && columnsCount === 3) {
+      className += ' stack-header';
+    }
   }
 
   const style: CSSProperties = {
@@ -136,7 +176,11 @@ function TableCell({ index, props, columns }: Props) {
     width: props.fixedWidths?.[index] ?? undefined,
   };
   const children = (columns && columns[index]) ?? null;
-  return <td data-iteration-index={index} style={style}>{children}</td>;
+  return (
+    <td className={className} data-iteration-index={index} style={style}>
+      {children}
+    </td>
+  );
 }
 
 function getPaddingBefore(index: number, { columnsGap, columnsCount }: Props['props']) {
