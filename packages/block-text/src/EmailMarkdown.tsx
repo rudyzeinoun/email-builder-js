@@ -67,6 +67,11 @@ function sanitizer(html: string): string {
 }
 
 class CustomRenderer extends Renderer {
+  private linkColor?: string | null;
+  constructor(linkColor?: string | null) {
+    super();
+    this.linkColor = linkColor;
+  }
   table(header: string, body: string) {
     return `<table width="100%">
 <thead>
@@ -77,6 +82,12 @@ ${body}</tbody>
   }
 
   link(href: string, title: string | null, text: string) {
+    if (this.linkColor) {
+      if (!title) {
+        return `<a href="${href}" style="color: ${this.linkColor}" target="_blank">${text}</a>`;
+      }
+      return `<a href="${href}" title="${title}" style="color: ${this.linkColor}" target="_blank">${text}</a>`;
+    }
     if (!title) {
       return `<a href="${href}" target="_blank">${text}</a>`;
     }
@@ -84,14 +95,14 @@ ${body}</tbody>
   }
 }
 
-function renderMarkdownString(str: string): string {
+function renderMarkdownString(str: string, linkColor?: string | null): string {
   const html = marked.parse(str, {
     async: false,
     breaks: true,
     gfm: true,
     pedantic: false,
     silent: false,
-    renderer: new CustomRenderer(),
+    renderer: new CustomRenderer(linkColor),
   });
   if (typeof html !== 'string') {
     throw new Error('marked.parse did not return a string');
@@ -102,8 +113,9 @@ function renderMarkdownString(str: string): string {
 type Props = {
   style: CSSProperties;
   markdown: string;
+  linkColor?: string | null;
 };
-export default function EmailMarkdown({ markdown, ...props }: Props) {
-  const data = useMemo(() => renderMarkdownString(markdown), [markdown]);
+export default function EmailMarkdown({ markdown, linkColor, ...props }: Props) {
+  const data = useMemo(() => renderMarkdownString(markdown, linkColor), [markdown, linkColor]);
   return <div {...props} dangerouslySetInnerHTML={{ __html: data }} />;
 }

@@ -78,6 +78,8 @@ export const TextPropsSchema = z.object({
       textAlign: z.enum(['left', 'center', 'right']).optional().nullable(),
       lineHeight: z.number().gte(0).optional().nullable(),
       padding: PADDING_SCHEMA,
+      letterSpacing: z.number().optional().nullable(),
+      linkColor: COLOR_SCHEMA,
     })
     .optional()
     .nullable(),
@@ -105,12 +107,13 @@ export function Text({ style, props }: TextProps) {
     fontWeight: style?.fontWeight ?? undefined,
     textAlign: style?.textAlign ?? undefined,
     lineHeight: style?.lineHeight ?? undefined,
+    letterSpacing: style?.letterSpacing ?? undefined,
     padding: getPadding(style?.padding),
   };
 
   const text = props?.text ?? TextPropsDefaults.text;
   if (props?.markdown) {
-    return <EmailMarkdown style={wStyle} markdown={text} />;
+    return <EmailMarkdown style={wStyle} markdown={text} linkColor={style?.linkColor} />;
   }
   return <div style={wStyle}>{text}</div>;
 }
