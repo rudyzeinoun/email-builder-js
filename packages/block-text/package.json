@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-text",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "@usewaypoint/document compatible Text component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

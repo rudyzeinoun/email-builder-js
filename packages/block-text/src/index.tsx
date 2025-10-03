@@ -76,6 +76,7 @@ export const TextPropsSchema = z.object({
       fontFamily: FONT_FAMILY_SCHEMA,
       fontWeight: z.enum(['bold', 'normal']).optional().nullable(),
       textAlign: z.enum(['left', 'center', 'right']).optional().nullable(),
+      lineHeight: z.number().gte(0).optional().nullable(),
       padding: PADDING_SCHEMA,
     })
     .optional()
@@ -103,6 +104,7 @@ export function Text({ style, props }: TextProps) {
     fontFamily: getFontFamily(style?.fontFamily),
     fontWeight: style?.fontWeight ?? undefined,
     textAlign: style?.textAlign ?? undefined,
+    lineHeight: style?.lineHeight ?? undefined,
     padding: getPadding(style?.padding),
   };
 
