@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/email-builder",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

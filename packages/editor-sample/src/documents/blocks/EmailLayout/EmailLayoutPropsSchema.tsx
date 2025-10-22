@@ -33,6 +33,7 @@ const EmailLayoutPropsSchema = z.object({
   childrenIds: z.array(z.string()).optional().nullable(),
   previewText: z.string().optional().nullable(),
   underline: z.boolean().optional().nullable(),
+  textDirection: z.enum(["ltr", "rtl"]).optional().nullable(),
 });
 
 export default EmailLayoutPropsSchema;

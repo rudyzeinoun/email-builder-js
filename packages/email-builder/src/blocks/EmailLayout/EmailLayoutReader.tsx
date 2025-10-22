@@ -64,6 +64,7 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           padding: '32px 0',
           minHeight: '100%',
           width: '100%',
+          direction: props.textDirection ?? "ltr",
         }}
       >
         <table
