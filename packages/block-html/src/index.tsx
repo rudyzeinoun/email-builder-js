@@ -97,8 +97,21 @@ export function Html({ style, props }: HtmlProps) {
     textAlign: style?.textAlign ?? undefined,
     padding: getPadding(style?.padding),
   };
-  if (!children) {
-    return <div style={cssStyle} />;
-  }
-  return <div style={cssStyle} dangerouslySetInnerHTML={{ __html: children }} />;
+  return (
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={cssStyle} align={style?.textAlign ?? undefined}>
+            {children ? <div dangerouslySetInnerHTML={{ __html: children }} /> : null}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }

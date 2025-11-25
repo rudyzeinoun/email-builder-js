@@ -50,7 +50,7 @@ export function Image({ style, props }: ImageProps) {
   };
 
   const linkHref = props?.linkHref ?? null;
-  const width = props?.width ?? undefined;
+  const width = props?.width ?? 600;
   const height = props?.height ?? undefined;
 
   const imageElement = (
@@ -60,7 +60,7 @@ export function Image({ style, props }: ImageProps) {
       width={width}
       height={height}
       style={{
-        width,
+        width: '100%',
         height,
         outline: 'none',
         border: 'none',
@@ -72,15 +72,30 @@ export function Image({ style, props }: ImageProps) {
     />
   );
 
-  if (!linkHref) {
-    return <div style={sectionStyle}>{imageElement}</div>;
-  }
+  const content = linkHref ? (
+    <a href={linkHref} style={{ textDecoration: 'none' }} target="_blank">
+      {imageElement}
+    </a>
+  ) : (
+    imageElement
+  );
 
   return (
-    <div style={sectionStyle}>
-      <a href={linkHref} style={{ textDecoration: 'none' }} target="_blank">
-        {imageElement}
-      </a>
-    </div>
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      width="100%"
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={sectionStyle} align={style?.textAlign ?? undefined}>
+            <div style={{ maxWidth: `${width}px`, margin: '0 auto' }}>{content}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

@@ -112,8 +112,27 @@ export function Text({ style, props }: TextProps) {
   };
 
   const text = props?.text ?? TextPropsDefaults.text;
-  if (props?.markdown) {
-    return <EmailMarkdown style={wStyle} markdown={text} linkColor={style?.linkColor} />;
-  }
-  return <div style={wStyle}>{text}</div>;
+  const content = props?.markdown ? (
+    <EmailMarkdown style={{}} markdown={text} linkColor={style?.linkColor} />
+  ) : (
+    <div>{text}</div>
+  );
+
+  return (
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={wStyle} align={style?.textAlign ?? undefined}>
+            {content}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }

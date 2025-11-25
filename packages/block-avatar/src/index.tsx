@@ -65,26 +65,38 @@ export function Avatar({ style, props }: AvatarProps) {
     padding: getPadding(style?.padding),
   };
   return (
-    <div style={sectionStyle}>
-      <img
-        alt={alt}
-        src={imageUrl}
-        height={size}
-        width={size}
-        style={{
-          outline: 'none',
-          border: 'none',
-          textDecoration: 'none',
-          objectFit: 'cover',
-          height: size,
-          width: size,
-          maxWidth: '100%',
-          display: 'inline-block',
-          verticalAlign: 'middle',
-          textAlign: 'center',
-          borderRadius: getBorderRadius(shape, size),
-        }}
-      />
-    </div>
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={sectionStyle} align={style?.textAlign ?? undefined}>
+            <img
+              alt={alt}
+              src={imageUrl}
+              height={size}
+              width={size}
+              style={{
+                outline: 'none',
+                border: 'none',
+                textDecoration: 'none',
+                objectFit: 'cover',
+                height: size,
+                width: size,
+                maxWidth: '100%',
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                textAlign: 'center',
+                borderRadius: getBorderRadius(shape, size),
+              }}
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

@@ -52,15 +52,27 @@ export function Divider({ style, props }: DividerProps) {
   const borderTopWidth = props?.lineHeight ?? DividerPropsDefaults.lineHeight;
   const borderTopColor = props?.lineColor ?? DividerPropsDefaults.lineColor;
   return (
-    <div style={st}>
-      <hr
-        style={{
-          width: '100%',
-          border: 'none',
-          borderTop: `${borderTopWidth}px solid ${borderTopColor}`,
-          margin: 0,
-        }}
-      />
-    </div>
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={st}>
+            <hr
+              style={{
+                width: '100%',
+                border: 'none',
+                borderTop: `${borderTopWidth}px solid ${borderTopColor}`,
+                margin: 0,
+              }}
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

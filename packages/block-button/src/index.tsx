@@ -159,20 +159,32 @@ export function Button({ style, props }: ButtonProps) {
   };
 
   return (
-    <div style={wrapperStyle}>
-      <a href={url} style={linkStyle} target="_blank">
-        <span
-          dangerouslySetInnerHTML={{
-            __html: `<!--[if mso]><i style="letter-spacing: ${padding[1]}px;mso-font-width:-100%;mso-text-raise:${textRaise}" hidden>&nbsp;</i><![endif]-->`,
-          }}
-        />
-        <span>{text}</span>
-        <span
-          dangerouslySetInnerHTML={{
-            __html: `<!--[if mso]><i style="letter-spacing: ${padding[1]}px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
-          }}
-        />
-      </a>
-    </div>
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={wrapperStyle} align={style?.textAlign ?? undefined}>
+            <a href={url} style={linkStyle} target="_blank">
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<!--[if mso]><i style="letter-spacing: ${padding[1]}px;mso-font-width:-100%;mso-text-raise:${textRaise}" hidden>&nbsp;</i><![endif]-->`,
+                }}
+              />
+              <span>{text}</span>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<!--[if mso]><i style="letter-spacing: ${padding[1]}px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
+                }}
+              />
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

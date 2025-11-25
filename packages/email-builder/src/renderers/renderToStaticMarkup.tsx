@@ -22,6 +22,7 @@ export default function renderToStaticMarkup(document: TReaderDocument, { rootBl
                 .responsive-desktop { display: none !important; }
               }
               .no-underline a { text-decoration: none }
+              p { margin: 0 }
 
               @media only screen and (max-width: 450px) {
               .stack { 

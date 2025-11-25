@@ -46,6 +46,9 @@ const ALLOWED_TAGS: AllowedTags[] = [
   'ul',
 ];
 const GENERIC_ALLOWED_ATTRIBUTES = ['style', 'title'];
+const TABLE_ALLOWED_ATTRIBUTES = ['width', 'cellpadding', 'cellspacing', 'border', 'role'];
+const PARAGRAPH_TOP_PADDING_PX = 5;
+const PARAGRAPH_BOTTOM_PADDING_PX = 16;
 
 function sanitizer(html: string): string {
   return insane(html, {
@@ -56,7 +59,7 @@ function sanitizer(html: string): string {
         return res;
       }, {}),
       img: ['src', 'srcset', 'alt', 'width', 'height', ...GENERIC_ALLOWED_ATTRIBUTES],
-      table: ['width', ...GENERIC_ALLOWED_ATTRIBUTES],
+      table: [...TABLE_ALLOWED_ATTRIBUTES, ...GENERIC_ALLOWED_ATTRIBUTES],
       td: ['align', 'width', ...GENERIC_ALLOWED_ATTRIBUTES],
       th: ['align', 'width', ...GENERIC_ALLOWED_ATTRIBUTES],
       a: ['href', 'target', ...GENERIC_ALLOWED_ATTRIBUTES],
@@ -92,6 +95,18 @@ ${body}</tbody>
       return `<a href="${href}" target="_blank">${text}</a>`;
     }
     return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
+  }
+
+  paragraph(text: string) {
+    return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="word-break:break-word">
+<tbody>
+<tr>
+<td style="padding-top: ${PARAGRAPH_TOP_PADDING_PX}px; padding-bottom: ${PARAGRAPH_BOTTOM_PADDING_PX}px;">
+<p style="margin: 0;">${text}</p>
+</td>
+</tr>
+</tbody>
+</table>`;
   }
 }
 

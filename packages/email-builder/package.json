@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/email-builder",
-  "version": "0.0.49",
+  "version": "0.0.57",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -27,16 +27,16 @@
     "zod": "^1 || ^2 || ^3"
   },
   "dependencies": {
-    "@rudyzeinoun/block-container": "^0.0.13",
-    "@usewaypoint/block-avatar": "^0.0.3",
-    "@rudyzeinoun/block-button": "^0.0.5",
+    "@rudyzeinoun/block-container": "^0.0.14",
+    "@rudyzeinoun/block-avatar": "^0.0.4",
+    "@rudyzeinoun/block-button": "^0.0.6",
     "@rudyzeinoun/block-columns-container": "^0.0.16",
-    "@usewaypoint/block-divider": "^0.0.4",
-    "@rudyzeinoun/block-heading": "^0.0.6",
-    "@rudyzeinoun/block-html": "^0.0.5",
-    "@usewaypoint/block-image": "^0.0.5",
-    "@usewaypoint/block-spacer": "^0.0.3",
-    "@rudyzeinoun/block-text": "^0.0.11",
+    "@rudyzeinoun/block-divider": "^0.0.5",
+    "@rudyzeinoun/block-heading": "^0.0.9",
+    "@rudyzeinoun/block-html": "^0.0.6",
+    "@rudyzeinoun/block-image": "^0.0.11",
+    "@rudyzeinoun/block-spacer": "^0.0.5",
+    "@rudyzeinoun/block-text": "^0.0.14",
     "@usewaypoint/document-core": "^0.0.6"
   },
   "devDependencies": {

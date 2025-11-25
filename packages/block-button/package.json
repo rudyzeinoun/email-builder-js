@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-button",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "@usewaypoint/document compatible Button component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

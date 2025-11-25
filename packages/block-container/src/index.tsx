@@ -54,7 +54,15 @@ function getBorder(style: ContainerProps['style']) {
   return `1px solid ${style.borderColor}`;
 }
 
-export function Container({ style, children, className, loopStart, loopEnd, responsiveDisplay, conditionStatement }: ContainerProps) {
+export function Container({
+  style,
+  children,
+  className,
+  loopStart,
+  loopEnd,
+  responsiveDisplay,
+  conditionStatement,
+}: ContainerProps) {
   const wStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
     border: getBorder(style),
@@ -62,31 +70,37 @@ export function Container({ style, children, className, loopStart, loopEnd, resp
     padding: getPadding(style?.padding),
   };
 
-  if (!className) className = "";
+  if (!className) className = '';
 
   if (!loopStart) loopStart = 0;
 
   if (!loopEnd) loopEnd = 0;
 
-  let classesList = "";
+  let classesList = '';
   if (responsiveDisplay == 'mobile') {
     classesList += ' responsive-mobile';
   } else if (responsiveDisplay == 'desktop') {
     classesList += ' responsive-desktop';
   }
 
-  const divProps: any = {
-    className: classesList,
-    'data-loop': className,
-    'data-loop-start': loopStart,
-    'data-loop-end': loopEnd,
-    style: wStyle,
-  };
-  if (conditionStatement) {
-    divProps['data-condition'] = conditionStatement;
-  }
-  if (!children) {
-    return <div {...divProps} />;
-  }
-  return <div {...divProps}>{children}</div>;
+  return (
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+      className={classesList}
+      data-loop={className}
+      data-loop-start={loopStart}
+      data-loop-end={loopEnd}
+      data-condition={conditionStatement ?? undefined}
+    >
+      <tbody>
+        <tr>
+          <td style={wStyle}>{children ?? null}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }

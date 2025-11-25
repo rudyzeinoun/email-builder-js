@@ -17,8 +17,25 @@ export const SpacerPropsDefaults = {
 };
 
 export function Spacer({ props }: SpacerProps) {
-  const style: CSSProperties = {
-    height: props?.height ?? SpacerPropsDefaults.height,
+  const height = props?.height ?? SpacerPropsDefaults.height;
+  const cellStyle: CSSProperties = {
+    height,
+    lineHeight: `${height}px`,
+    fontSize: '1px',
   };
-  return <div style={style} />;
+  return (
+    <table
+      role="presentation"
+      cellPadding={0}
+      cellSpacing={0}
+      border={0}
+      style={{ width: '100%', borderCollapse: 'collapse' }}
+    >
+      <tbody>
+        <tr>
+          <td style={cellStyle} dangerouslySetInnerHTML={{ __html: '&nbsp;' }} />
+        </tr>
+      </tbody>
+    </table>
+  );
 }

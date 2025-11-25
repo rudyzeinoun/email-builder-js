@@ -1,13 +1,13 @@
 import React, { createContext, useContext } from 'react';
 import { z } from 'zod';
 
-import { Avatar, AvatarPropsSchema } from '@usewaypoint/block-avatar';
+import { Avatar, AvatarPropsSchema } from '@rudyzeinoun/block-avatar';
 import { Button, ButtonPropsSchema } from '@rudyzeinoun/block-button';
-import { Divider, DividerPropsSchema } from '@usewaypoint/block-divider';
+import { Divider, DividerPropsSchema } from '@rudyzeinoun/block-divider';
 import { Heading, HeadingPropsSchema } from '@rudyzeinoun/block-heading';
 import { Html, HtmlPropsSchema } from '@rudyzeinoun/block-html';
-import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
-import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
+import { Image, ImagePropsSchema } from '@rudyzeinoun/block-image';
+import { Spacer, SpacerPropsSchema } from '@rudyzeinoun/block-spacer';
 import { Text, TextPropsSchema } from '@rudyzeinoun/block-text';
 import {
   buildBlockComponent,

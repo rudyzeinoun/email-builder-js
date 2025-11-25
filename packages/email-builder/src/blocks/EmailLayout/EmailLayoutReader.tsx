@@ -64,15 +64,15 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           padding: '32px 0',
           minHeight: '100%',
           width: '100%',
-          direction: props.textDirection ?? "ltr",
+          direction: props.textDirection ?? 'ltr',
         }}
       >
         <table
           align="center"
-          width="100%"
+          width="600"
           style={{
             margin: '0 auto',
-            maxWidth: '600px',
+            maxWidth: '100%',
             backgroundColor: props.canvasColor ?? '#FFFFFF',
             borderRadius: props.borderRadius ?? undefined,
             border: getBorder(props),

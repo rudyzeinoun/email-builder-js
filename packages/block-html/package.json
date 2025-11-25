@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-html",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "@usewaypoint/document compatible HTML component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
