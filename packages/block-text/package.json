@@ -1,6 +1,6 @@
 {
   "name": "@rudyzeinoun/block-text",
-  "version": "0.0.14",
+  "version": "0.0.17",
   "description": "@usewaypoint/document compatible Text component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -33,7 +33,6 @@
     "@types/insane": "^1.0.0"
   },
   "dependencies": {
-    "insane": "^2.6.2",
     "marked": "^12.0.2"
   }
 }
